@@ -11,11 +11,7 @@ void main() {
         ),
         backgroundColor: Colors.blueGrey,
         body: Center(
-          child: Image(
-            image: AssetImage(
-              'images/diamond.png',
-            ),
-          ),
+          child: Image.asset('assets/images/diamond.png'),
         ),
       ),
     ),
