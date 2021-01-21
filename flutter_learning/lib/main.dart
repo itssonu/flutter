@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyProfileCard());
+  runApp(DiceApp());
 }
 
 // 1
-class IAmPoor extends StatelessWidget {
+class IAmRich extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[200],
         appBar: AppBar(
-          title: Text('I Am Poor'),
-          backgroundColor: Colors.lightBlue[900],
+          title: Text('I Am Rich'),
+          backgroundColor: Colors.blueGrey[900],
           centerTitle: true,
         ),
+        backgroundColor: Colors.blueGrey,
         body: Center(
-          child: Image.network(
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Coal_anthracite.jpg/220px-Coal_anthracite.jpg',
-            width: 500,
-            height: 500,
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          child: Text('Hello'),
-          elevation: 200,
+          child: Image.asset('assets/images/diamond.png'),
         ),
       ),
     );
@@ -77,6 +68,7 @@ class ContainerLearn extends StatelessWidget {
   }
 }
 
+// 3
 class MyProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -96,7 +88,7 @@ class MyProfileCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 50,
                   // backgroundColor: Colors.lightBlueAccent,
-                  backgroundImage: AssetImage('assets/profile.jpg'),
+                  backgroundImage: AssetImage('assets/images/profile.jpg'),
                 ),
                 Text(
                   'Sonu Gupta',
@@ -158,6 +150,45 @@ class MyProfileCard extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// 4
+class DiceApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.redAccent.shade400,
+        appBar: AppBar(
+          backgroundColor: Colors.redAccent.shade400,
+          title: Text('Dice App'),
+        ),
+        body: Center(
+          child: Row(
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image(
+                    image: AssetImage('assets/images/dice1.png'),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image(
+                    image: AssetImage('assets/images/dice1.png'),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
