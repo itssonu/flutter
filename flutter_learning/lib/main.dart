@@ -1,7 +1,10 @@
+import 'dart:math';
+import 'package:audioplayers/audio_cache.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DiceApp());
+  runApp(XyloPhone());
 }
 
 // 1
@@ -158,7 +161,15 @@ class MyProfileCard extends StatelessWidget {
 }
 
 // 4
-class DiceApp extends StatelessWidget {
+class DiceApp extends StatefulWidget {
+  @override
+  _DiceAppState createState() => _DiceAppState();
+}
+
+class _DiceAppState extends State<DiceApp> {
+  int leftdicenumber = 1;
+  int rightdicenumber = 1;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -173,23 +184,85 @@ class DiceApp extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                child: FlatButton(
+                  onPressed: () {
+                    print('left button pressed');
+                    setState(() {
+                      leftdicenumber = Random().nextInt(6) + 1;
+                    });
+                    // print(dicenumber);
+                  },
                   child: Image(
-                    image: AssetImage('assets/images/dice1.png'),
+                    image: AssetImage('assets/images/dice$leftdicenumber.png'),
                   ),
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                child: FlatButton(
+                  onPressed: () {
+                    print('left button pressed');
+                    setState(() {
+                      rightdicenumber = Random().nextInt(6) + 1;
+                    });
+                    // print(dicenumber);
+                  },
                   child: Image(
-                    image: AssetImage('assets/images/dice1.png'),
+                    image: AssetImage('assets/images/dice$rightdicenumber.png'),
                   ),
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+// 5
+class Desionball extends StatefulWidget {
+  @override
+  _DesionballState createState() => _DesionballState();
+}
+
+// 6
+class _DesionballState extends State<Desionball> {
+  int ballnumber = 1;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blueAccent.shade700,
+          title: Text('Dession Ball'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: FlatButton(
+            onPressed: () {
+              setState(() {
+                ballnumber = Random().nextInt(5) + 1;
+              });
+            },
+            child: Image.asset('assets/images/ball$ballnumber.png'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class XyloPhone extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: FlatButton(
+          onPressed: () {
+            final player = AudioCache(prefix: 'assets/audio/');
+            player.play('note1.wav');
+          },
+          child: Text('Click Me'),
         ),
       ),
     );
