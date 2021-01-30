@@ -3,13 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../reusable/IconContent.dart';
-import '../reusable/Self_Container.dart';
+import 'reusable/IconContent.dart';
+import 'reusable/Self_Container.dart';
 
-const bottomContainerHeight = 80.0;
-const Color activeCardColor = Color(0xFF1D1E33);
-const Color inactiveCardColor = Color(0xFF11328);
-const Color bottomContainerColor = Color(0xFFEB1555);
+import 'constants.dart';
 
 enum Gender { Male, Female }
 
@@ -23,10 +20,12 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
   // Color femaleCardColor = inactiveCardColor;
 
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           child: Row(
@@ -41,8 +40,8 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                     });
                   },
                   color: selectedGender == Gender.Male
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kactiveCardColor
+                      : kinactiveCardColor,
                   child:
                       IconContent(icon: FontAwesomeIcons.male, label: 'MALE'),
                 ),
@@ -57,8 +56,8 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                     });
                   },
                   color: selectedGender == Gender.Female
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kactiveCardColor
+                      : kinactiveCardColor,
                   child: IconContent(
                       icon: FontAwesomeIcons.female, label: 'FEMALE'),
                 ),
@@ -67,16 +66,53 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
           ),
         ),
         Expanded(
-          child: Self_Container(color: activeCardColor),
+          child: Self_Container(
+            color: kactiveCardColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'HEIGHT',
+                  style: klabelStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      height.toString(),
+                      style: knumberLabelStyle,
+                    ),
+                    Text(
+                      'Cm',
+                      style: klabelStyle,
+                    ),
+                  ],
+                ),
+                Slider(
+                  onChanged: (double newHeight) {
+                    setState(() {
+                      height = newHeight.toInt();
+                    });
+                  },
+                  min: 100.0,
+                  max: 400.0,
+                  activeColor: kactiveSliderColor,
+                  value: height.toDouble(),
+                )
+              ],
+            ),
+          ),
         ),
         Expanded(
           child: Row(
             children: [
               Expanded(
-                child: Self_Container(color: activeCardColor),
+                child: Self_Container(color: kactiveCardColor),
               ),
               Expanded(
-                child: Self_Container(color: activeCardColor),
+                child: Self_Container(color: kactiveCardColor),
               ),
             ],
           ),
@@ -84,10 +120,10 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
         Container(
           // theme:ThemeData()
           width: double.infinity,
-          height: bottomContainerHeight,
+          height: kbottomContainerHeight,
           margin: EdgeInsets.only(top: 10.0),
           decoration: BoxDecoration(
-            color: bottomContainerColor,
+            color: kbottomContainerColor,
             // borderRadius: BorderRadius.circular(10.0),
           ),
         ),
