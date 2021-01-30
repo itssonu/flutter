@@ -24,26 +24,6 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
 
   Gender selectedGender;
 
-// 1=male, 2= femlae
-  // void updateColor(Gender gender) {
-  //   if (gender == Gender.Male) {
-  //     if (maleCardColor == activeCardColor) {
-  //       maleCardColor = inactiveCardColor;
-  //     } else {
-  //       maleCardColor = activeCardColor;
-  //     }
-
-  //     femaleCardColor = inactiveCardColor;
-  //   } else if (gender == Gender.Female) {
-  //     if (femaleCardColor == activeCardColor) {
-  //       femaleCardColor = inactiveCardColor;
-  //     } else {
-  //       femaleCardColor = activeCardColor;
-  //     }
-  //     maleCardColor = inactiveCardColor;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,49 +32,35 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
           child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: Self_Container(
+                  sOnTap: () {
                     print('male pressed');
 
                     setState(() {
-                      // updateColor(Gender.Male);
-                      // maleCardColor == activeCardColor
-                      //     ? maleCardColor = inactiveCardColor
-                      //     : maleCardColor = activeCardColor;
-                      // femaleCardColor = inactiveCardColor;
                       selectedGender = Gender.Male;
                     });
                   },
-                  child: Self_Container(
-                    color: selectedGender == Gender.Male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    child:
-                        IconContent(icon: FontAwesomeIcons.male, label: 'MALE'),
-                  ),
+                  color: selectedGender == Gender.Male
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  child:
+                      IconContent(icon: FontAwesomeIcons.male, label: 'MALE'),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: Self_Container(
+                  sOnTap: () {
                     print('female pressed');
 
                     setState(() {
-                      // updateColor(Gender.Female);
                       selectedGender = Gender.Female;
-                      // femaleCardColor == activeCardColor
-                      //     ? femaleCardColor = inactiveCardColor
-                      //     : femaleCardColor = activeCardColor;
-                      // maleCardColor = inactiveCardColor;
                     });
                   },
-                  child: Self_Container(
-                    color: selectedGender == Gender.Female
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    child: IconContent(
-                        icon: FontAwesomeIcons.female, label: 'FEMALE'),
-                  ),
+                  color: selectedGender == Gender.Female
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  child: IconContent(
+                      icon: FontAwesomeIcons.female, label: 'FEMALE'),
                 ),
               ),
             ],
@@ -131,3 +97,11 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
 }
 
 // ignore: camel_case_types
+
+// onTap: () {
+//                 print('female pressed');
+
+//                 setState(() {
+//                   selectedGender = Gender.Female;
+//                 });
+//               },
