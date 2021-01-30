@@ -11,34 +11,38 @@ const Color activeCardColor = Color(0xFF1D1E33);
 const Color inactiveCardColor = Color(0xFF11328);
 const Color bottomContainerColor = Color(0xFFEB1555);
 
+enum Gender { Male, Female }
+
 class BMICalculatorPage extends StatefulWidget {
   @override
   _BMICalculatorPageState createState() => _BMICalculatorPageState();
 }
 
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
+  // Color maleCardColor = inactiveCardColor;
+  // Color femaleCardColor = inactiveCardColor;
+
+  Gender selectedGender;
 
 // 1=male, 2= femlae
-  void updateColor(int gender) {
-    if (gender == 1) {
-      if (maleCardColor == activeCardColor) {
-        maleCardColor = inactiveCardColor;
-      } else {
-        maleCardColor = activeCardColor;
-      }
+  // void updateColor(Gender gender) {
+  //   if (gender == Gender.Male) {
+  //     if (maleCardColor == activeCardColor) {
+  //       maleCardColor = inactiveCardColor;
+  //     } else {
+  //       maleCardColor = activeCardColor;
+  //     }
 
-      femaleCardColor = inactiveCardColor;
-    } else if (gender == 2) {
-      if (femaleCardColor == activeCardColor) {
-        femaleCardColor = inactiveCardColor;
-      } else {
-        femaleCardColor = activeCardColor;
-      }
-      maleCardColor = inactiveCardColor;
-    }
-  }
+  //     femaleCardColor = inactiveCardColor;
+  //   } else if (gender == Gender.Female) {
+  //     if (femaleCardColor == activeCardColor) {
+  //       femaleCardColor = inactiveCardColor;
+  //     } else {
+  //       femaleCardColor = activeCardColor;
+  //     }
+  //     maleCardColor = inactiveCardColor;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +55,20 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                 child: GestureDetector(
                   onTap: () {
                     print('male pressed');
+
                     setState(() {
-                      updateColor(1);
+                      // updateColor(Gender.Male);
+                      // maleCardColor == activeCardColor
+                      //     ? maleCardColor = inactiveCardColor
+                      //     : maleCardColor = activeCardColor;
+                      // femaleCardColor = inactiveCardColor;
+                      selectedGender = Gender.Male;
                     });
                   },
                   child: Self_Container(
-                    color: maleCardColor,
+                    color: selectedGender == Gender.Male
+                        ? activeCardColor
+                        : inactiveCardColor,
                     child:
                         IconContent(icon: FontAwesomeIcons.male, label: 'MALE'),
                   ),
@@ -66,12 +78,20 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                 child: GestureDetector(
                   onTap: () {
                     print('female pressed');
+
                     setState(() {
-                      updateColor(2);
+                      // updateColor(Gender.Female);
+                      selectedGender = Gender.Female;
+                      // femaleCardColor == activeCardColor
+                      //     ? femaleCardColor = inactiveCardColor
+                      //     : femaleCardColor = activeCardColor;
+                      // maleCardColor = inactiveCardColor;
                     });
                   },
                   child: Self_Container(
-                    color: femaleCardColor,
+                    color: selectedGender == Gender.Female
+                        ? activeCardColor
+                        : inactiveCardColor,
                     child: IconContent(
                         icon: FontAwesomeIcons.female, label: 'FEMALE'),
                   ),
@@ -81,9 +101,7 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
           ),
         ),
         Expanded(
-          child: Expanded(
-            child: Self_Container(color: activeCardColor),
-          ),
+          child: Self_Container(color: activeCardColor),
         ),
         Expanded(
           child: Row(
