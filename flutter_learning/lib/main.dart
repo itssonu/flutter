@@ -561,12 +561,7 @@ class BMICalculator extends StatelessWidget {
           title: Text('BMI CALCULATOR'),
           centerTitle: true,
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: BMICalculatorPage(),
-          ),
-        ),
+        body: BMICalculatorPage(),
       ),
     );
   }
