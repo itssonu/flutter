@@ -308,6 +308,7 @@ class XyloPhone extends StatelessWidget {
   Expanded newMethod({Color color, int soundnumber}) {
     return Expanded(
       child: FlatButton(
+        child: null,
         color: color,
         onPressed: () {
           playsound(soundnumber);
