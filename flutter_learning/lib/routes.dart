@@ -1,4 +1,5 @@
-import 'package:flutter_learning/Home.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_learning/main.dart';
 import 'package:flutter_learning/bmiCalculator/BMICalculator.dart';
 import 'package:flutter_learning/container/containerLearn.dart';
 import 'package:flutter_learning/desionball/Desionball.dart';
@@ -9,15 +10,15 @@ import 'package:flutter_learning/quiz/Quizzler.dart';
 import 'package:flutter_learning/xquiz/xquiz_main.dart';
 import 'package:flutter_learning/xylophone/XyloPhone.dart';
 
-Map<String, Function> routes = {
-  // '/': (context) => Home(),
-  '/i_am_rich': (context) => IAmRich(),
-  '/container_learn': (context) => ContainerLearn(),
-  '/my_profile_card': (context) => MyProfileCard(),
-  '/dice': (context) => DiceApp(),
-  '/desionball': (context) => Desionball(),
-  '/xylophone': (context) => XyloPhone(),
-  '/quiz': (context) => Quizzler(),
-  '/xquiz': (context) => XQuiz(),
-  '/bmi': (context) => BMICalculator(),
+Map<String, WidgetBuilder> routes = {
+  '/': (context) => MyHome(),
+  'i_am_rich': (context) => IAmRich(),
+  'container_learn': (context) => ContainerLearn(),
+  'my_profile_card': (context) => MyProfileCard(),
+  'dice': (context) => DiceApp(),
+  'desionball': (context) => Desionball(),
+  'xylophone': (context) => XyloPhone(),
+  'quiz': (context) => Quizzler(),
+  'xquiz': (context) => XQuiz(),
+  'bmi': (context) => BMICalculator(),
 };
