@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/routes.dart';
 
-// import 'package:flutter_learning/bmiCalculator/BMICalculator.dart';
+import 'package:flutter_learning/weather/Weather.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Weather());
 }
 
 class MyApp extends StatelessWidget {

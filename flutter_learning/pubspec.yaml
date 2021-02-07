@@ -30,6 +30,7 @@ dependencies:
   audioplayers: ^0.10.0
   rflutter_alert: ^1.1.0
   font_awesome_flutter: ^8.11.0
+  geolocator: ^6.2.0
 
 dev_dependencies:
   flutter_test:
