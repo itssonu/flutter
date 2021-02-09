@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_learning/weather/constants.dart';
+import 'package:flutter_learning/weather/screens/LocationScreen.dart';
+// import 'package:flutter_learning/weather/screens/LocationScreen.dart';
+import 'package:flutter_learning/weather/services/Location.dart';
+import 'package:flutter_learning/weather/services/networking.dart';
+// import 'package:flutter_learning/routes.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -7,21 +12,34 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  Location location = Location();
+  @override
+  initState() {
+    // TODO: implement initState
+    super.initState();
+    // getLocation();
+    getLocation();
+  }
+
   Future<void> getLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    print(position);
+    await location.getCurrentLocation();
+    double latitude = location.latitude;
+    double longitude = location.longitude;
+
+    NetworkHelper network = NetworkHelper(
+        url:
+            'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$kweatherApiKey');
+
+    var weatherData = await network.getWeather();
+    print(weatherData);
   }
 
-  Future<void> checkLocationPermission() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    print(permission);
-  }
-
-  Future<void> requestPermission() async {
-    LocationPermission permission = await Geolocator.requestPermission();
-    print(permission);
-  }
+  // getData() {
+  //   location.getCurrentLocation();
+  //   latitude = location.latitude;
+  //   longitude = location.longitude;
+  //   location.getWeather();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +47,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Center(
         child: RaisedButton(
           onPressed: () async {
-            checkLocationPermission();
-            getLocation();
+            print('pressed Get Location');
+            // getLocation();
+            // getLocation();
+            // Navigator.pushNamed(context, 'weather/locationScreen');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LocationScreen()),
+            );
           },
           child: Text('Get Location'),
         ),

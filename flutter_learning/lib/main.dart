@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/routes.dart';
 
-import 'package:flutter_learning/weather/Weather.dart';
-
 void main() {
-  runApp(Weather());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -122,6 +120,13 @@ class MyHome extends StatelessWidget {
                     route: 'quiz',
                     color: Colors.lime[900],
                     appName: 'Quiz',
+                  ),
+                ),
+                Expanded(
+                  child: MenuButton(
+                    route: 'weather',
+                    color: Colors.amberAccent,
+                    appName: 'Weather App',
                   ),
                 ),
               ],

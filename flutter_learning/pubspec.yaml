@@ -31,6 +31,7 @@ dependencies:
   rflutter_alert: ^1.1.0
   font_awesome_flutter: ^8.11.0
   geolocator: ^6.2.0
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/weather/
     - assets/sounds/
   #   - images/a_dot_ham.jpeg
 
