@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/weather/constants.dart';
 import 'package:flutter_learning/weather/screens/LocationScreen.dart';
-// import 'package:flutter_learning/weather/screens/LocationScreen.dart';
-import 'package:flutter_learning/weather/services/Location.dart';
-import 'package:flutter_learning/weather/services/networking.dart';
-// import 'package:flutter_learning/routes.dart';
+import 'package:flutter_learning/weather/services/WeatherModel.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -12,7 +9,6 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  Location location = Location();
   @override
   initState() {
     // TODO: implement initState
@@ -22,16 +18,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   Future<void> getLocation() async {
-    await location.getCurrentLocation();
-    double latitude = location.latitude;
-    double longitude = location.longitude;
-
-    NetworkHelper network = NetworkHelper(
-        url:
-            'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$kweatherApiKey');
-
-    var weatherData = await network.getWeather();
+    // print(weatherData);
+    WeatherModel weatherModel = WeatherModel();
+    var weatherData = await weatherModel.getCurrentWeatherData();
     print(weatherData);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => LocationScreen(
+                locationWeather: weatherData,
+              )),
+    );
   }
 
   // getData() {
@@ -44,20 +41,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: () async {
-            print('pressed Get Location');
-            // getLocation();
-            // getLocation();
-            // Navigator.pushNamed(context, 'weather/locationScreen');
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LocationScreen()),
-            );
-          },
-          child: Text('Get Location'),
-        ),
+      backgroundColor: Colors.black,
+      body: SpinKitWave(
+        color: Colors.white,
+        size: 50.0,
       ),
     );
   }
