@@ -49,16 +49,10 @@ class _CurrencyState extends State<Currency> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DropdownButton<String>(
-              elevation: 15,
-              value: selectedCurrencyValue,
-              onChanged: (value) {
-                print(value);
-                setState(() {
-                  selectedCurrencyValue = value;
-                });
-              },
-              items: getdropdown(),
+            Container(
+              height: 200.0,
+              width: 200.0,
+              child: iosDropdown(),
             ),
           ],
         ),
@@ -66,27 +60,59 @@ class _CurrencyState extends State<Currency> {
     );
   }
 
-  List getdropdown() {
-    var a = kcurrencyList.map<DropdownMenuItem<String>>((value) {
-      return DropdownMenuItem<String>(
-        value: value,
-        child: Text(value),
-      );
-    }).toList();
-    return a;
+  Widget androidDropdown() {
+    List getdropdown() {
+      var a = kcurrencyList.map<DropdownMenuItem<String>>((value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList();
+      return a;
+    }
+
+    // ignore: unused_element
+    List<DropdownMenuItem<String>> getDropdoenItem() {
+      List<DropdownMenuItem<String>> dropdownitem = [];
+      for (var value in kcurrencyList) {
+        var a = DropdownMenuItem(
+          child: Text(value),
+          value: value,
+        );
+        dropdownitem.add(a);
+      }
+      return dropdownitem;
+    }
+
+    return DropdownButton<String>(
+      elevation: 15,
+      value: selectedCurrencyValue,
+      onChanged: (value) {
+        print(value);
+        setState(() {
+          selectedCurrencyValue = value;
+        });
+      },
+      items: getdropdown(),
+    );
   }
 
-  // ignore: missing_return
-  List<DropdownMenuItem<String>> getDropdoenItem() {
-    List<DropdownMenuItem<String>> dropdownitem = [];
-    for (var value in kcurrencyList) {
-      var a = DropdownMenuItem(
-        child: Text(value),
-        value: value,
-      );
-      dropdownitem.add(a);
+  Widget iosDropdown() {
+    List dropdownItem() {
+      var a = kcurrencyList.map<Text>((String value) {
+        return Text(value);
+      }).toList();
+      ;
+      return a;
     }
-    return dropdownitem;
+
+    return CupertinoPicker(
+      itemExtent: 25.0,
+      onSelectedItemChanged: (int value) {
+        print(value);
+      },
+      children: dropdownItem(),
+    );
   }
 }
 
