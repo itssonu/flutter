@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/routes.dart';
-import 'package:flutter_learning/virtualCurrency/VirtualCurrency.dart';
 
 void main() {
-  runApp(VirtualCurrency());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -92,7 +91,7 @@ class MyHome extends StatelessWidget {
                 ),
                 Expanded(
                   child: MenuButton(
-                    route: 'Crypto Exchnager',
+                    route: 'crypto',
                     color: Colors.blue[300],
                     appName: 'Crypto Exchnager',
                   ),

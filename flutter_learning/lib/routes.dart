@@ -7,8 +7,8 @@ import 'package:flutter_learning/dice/DiceApp.dart';
 import 'package:flutter_learning/iamrich/IAmRich.dart';
 import 'package:flutter_learning/myprofilecard/MyProfileCard.dart';
 import 'package:flutter_learning/quiz/Quizzler.dart';
+import 'package:flutter_learning/virtualCurrency/VirtualCurrency.dart';
 import 'package:flutter_learning/weather/Weather.dart';
-import 'package:flutter_learning/weather/screens/LocationScreen.dart';
 import 'package:flutter_learning/xquiz/xquiz_main.dart';
 import 'package:flutter_learning/xylophone/XyloPhone.dart';
 
@@ -25,5 +25,5 @@ Map<String, WidgetBuilder> routes = {
   'bmi': (context) => BMICalculator(),
   'weather': (context) => Weather(),
   // 'weather/locationScreen': (context) => LocationScreen(),
-  // 'crypto': (context) => (),
+  'crypto': (context) => VirtualCurrency(),
 };
