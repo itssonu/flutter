@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/virtualCurrency/utilities/constants.dart';
 
@@ -49,6 +50,7 @@ class _CurrencyState extends State<Currency> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             DropdownButton<String>(
+              elevation: 15,
               value: selectedCurrencyValue,
               onChanged: (value) {
                 print(value);
@@ -56,30 +58,58 @@ class _CurrencyState extends State<Currency> {
                   selectedCurrencyValue = value;
                 });
               },
-              items: [
-                kcurrencyList.map<DropdownMenuItem<String>>((value) {
-                  return DropdownMenuItem(
-                    child: Text('USD'),
-                    value: 'USD',
-                  );
-                }),
-                DropdownMenuItem(
-                  child: Text('USD'),
-                  value: 'USD',
-                ),
-                DropdownMenuItem(
-                  child: Text('EURO'),
-                  value: 'EURO',
-                ),
-                DropdownMenuItem(
-                  child: Text('INR'),
-                  value: 'INR',
-                ),
-              ],
+              items: getdropdown(),
             ),
           ],
         ),
       ),
     );
   }
+
+  List getdropdown() {
+    var a = kcurrencyList.map<DropdownMenuItem<String>>((value) {
+      return DropdownMenuItem<String>(
+        value: value,
+        child: Text(value),
+      );
+    }).toList();
+    return a;
+  }
+
+  // ignore: missing_return
+  List<DropdownMenuItem<String>> getDropdoenItem() {
+    List<DropdownMenuItem<String>> dropdownitem = [];
+    for (var value in kcurrencyList) {
+      var a = DropdownMenuItem(
+        child: Text(value),
+        value: value,
+      );
+      dropdownitem.add(a);
+    }
+    return dropdownitem;
+  }
 }
+
+// [
+// // kcurrencyList,
+// DropdownMenuItem(
+// child: Text('USD'),
+// value: 'USD',
+// ),
+// DropdownMenuItem(
+// child: Text('EURO'),
+// value: 'EURO',
+// ),
+// DropdownMenuItem(
+// child: Text('INR'),
+// value: 'INR',
+// ),
+// ]
+
+// CupertinoPicker(
+// itemExtent: 50.0,
+// onSelectedItemChanged: (value) {
+// print(value);
+// },
+// children: kcurrencyList,
+// )
