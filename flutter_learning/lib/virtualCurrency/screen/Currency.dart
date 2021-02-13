@@ -21,20 +21,23 @@ class _CurrencyState extends State<Currency> {
 
   void updateUi() async {
     BTCexchangeValue = 0.0;
-    ETHexchangeValue = 0.0;
-    LTCexchangeValue = 0.0;
     Network btcNetwork = Network('BTC/$selectedCurrencySign');
-    Network ethNetwork = Network('ETH/$selectedCurrencySign');
-    Network ltcNetwork = Network('LTC/$selectedCurrencySign');
     var data1 = await btcNetwork.getData();
-    var data2 = await ethNetwork.getData();
-    var data3 = await ltcNetwork.getData();
     print(data1);
+    BTCexchangeValue = data1['rate'].roundToDouble();
+
+    ETHexchangeValue = 0.0;
+    Network ethNetwork = Network('ETH/$selectedCurrencySign');
+    var data2 = await ethNetwork.getData();
     print(data2);
+    ETHexchangeValue = data2['rate'].roundToDouble();
+
+    LTCexchangeValue = 0.0;
+    Network ltcNetwork = Network('LTC/$selectedCurrencySign');
+    var data3 = await ltcNetwork.getData();
     print(data3);
+
     setState(() {
-      BTCexchangeValue = data1['rate'].roundToDouble();
-      ETHexchangeValue = data2['rate'].roundToDouble();
       LTCexchangeValue = data3['rate'].roundToDouble();
     });
   }
