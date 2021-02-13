@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/weather/screens/CityScreen.dart';
+import 'package:flutter_learning/weather/screens/LoadingScreen.dart';
 import 'package:flutter_learning/weather/services/WeatherModel.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -21,7 +23,9 @@ class _LocationScreenState extends State<LocationScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    updateUi(widget.locationWeather);
+    if (widget.locationWeather != null) {
+      updateUi(widget.locationWeather);
+    }
   }
 
   void updateUi(dynamic weatherData) {
@@ -58,11 +62,17 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      print("current location ");
-                      WeatherModel weatherModel = WeatherModel();
-                      var weatherData =
-                          await weatherModel.getCurrentWeatherData();
-                      updateUi(weatherData);
+                      // print("current location ");
+                      // WeatherModel weatherModel = WeatherModel();
+                      // var weatherData =
+                      //     await weatherModel.getCurrentWeatherData();
+                      // updateUi(weatherData);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoadingScreen()),
+                      );
                     },
                     child: Icon(
                       Icons.near_me,
@@ -70,10 +80,26 @@ class _LocationScreenState extends State<LocationScreen> {
                       size: 50.0,
                     ),
                   ),
-                  Icon(
-                    Icons.location_city,
-                    color: Colors.white,
-                    size: 50.0,
+                  GestureDetector(
+                    onTap: () async {
+                      var typeName = await Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CityScreen()),
+                      );
+                      // print(typeName);
+                      if (typeName != null) {
+                        var cityweatherData =
+                            await weatherModel.getCityWeatherData(typeName);
+                        setState(() {
+                          updateUi(cityweatherData);
+                        });
+                      }
+                    },
+                    child: Icon(
+                      Icons.location_city,
+                      color: Colors.white,
+                      size: 50.0,
+                    ),
                   ),
                 ],
               ),
@@ -96,13 +122,16 @@ class _LocationScreenState extends State<LocationScreen> {
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
                   children: [
-                    Container(
-                      child: Text(
-                        '$weatherMessage  in $cityName',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
+                    Expanded(
+                      child: Container(
+                        child: Text(
+                          '$weatherMessage  in $cityName',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 80.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

@@ -35,6 +35,21 @@ class WeatherModel {
     }
   }
 
+  Future<dynamic> getCityWeatherData(String cityName) async {
+    // Location location = Location();
+    // await location.getCurrentLocation();
+    // double latitude = location.latitude;
+    // double longitude = location.longitude;
+
+    NetworkHelper network = NetworkHelper(
+        url:
+            'http://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$kweatherApiKey&units=metric');
+
+    var weatherData = await network.getData();
+    // print("sonu");
+    return weatherData;
+  }
+
   Future<dynamic> getCurrentWeatherData() async {
     Location location = Location();
     await location.getCurrentLocation();
