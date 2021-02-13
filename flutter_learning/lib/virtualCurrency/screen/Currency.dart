@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/virtualCurrency/utilities/constants.dart';
+import 'dart:io' show Platform;
 
 class Currency extends StatefulWidget {
   @override
@@ -49,11 +50,7 @@ class _CurrencyState extends State<Currency> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 200.0,
-              width: 200.0,
-              child: iosDropdown(),
-            ),
+            Platform.isIOS ? iosDropdown() : androidDropdown(),
           ],
         ),
       ),
@@ -106,12 +103,16 @@ class _CurrencyState extends State<Currency> {
       return a;
     }
 
-    return CupertinoPicker(
-      itemExtent: 25.0,
-      onSelectedItemChanged: (int value) {
-        print(value);
-      },
-      children: dropdownItem(),
+    return Container(
+      height: 200.0,
+      width: 200.0,
+      child: CupertinoPicker(
+        itemExtent: 25.0,
+        onSelectedItemChanged: (int value) {
+          print(value);
+        },
+        children: dropdownItem(),
+      ),
     );
   }
 }
