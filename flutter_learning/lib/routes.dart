@@ -24,5 +24,6 @@ Map<String, WidgetBuilder> routes = {
   'xquiz': (context) => XQuiz(),
   'bmi': (context) => BMICalculator(),
   'weather': (context) => Weather(),
+  // 'weather/locationScreen': (context) => LocationScreen(),
   'weather/locationScreen': (context) => LocationScreen(),
 };

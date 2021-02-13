@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/routes.dart';
+import 'package:flutter_learning/virtualCurrency/VirtualCurrency.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VirtualCurrency());
 }
 
 class MyApp extends StatelessWidget {
