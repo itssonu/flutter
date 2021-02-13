@@ -25,5 +25,5 @@ Map<String, WidgetBuilder> routes = {
   'bmi': (context) => BMICalculator(),
   'weather': (context) => Weather(),
   // 'weather/locationScreen': (context) => LocationScreen(),
-  'crypto': (context) => (),
+  // 'crypto': (context) => (),
 };
