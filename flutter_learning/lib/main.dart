@@ -89,6 +89,13 @@ class MyHome extends StatelessWidget {
                     appName: 'Bmi Calculator',
                   ),
                 ),
+                Expanded(
+                  child: MenuButton(
+                    route: 'Crypto Exchnager',
+                    color: Colors.blue[300],
+                    appName: 'Crypto Exchnager',
+                  ),
+                ),
               ],
             ),
           ),
