@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/chat/screens/Chathome.dart';
 import 'package:flutter_learning/routes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChatHome());
 }
 
 class MyApp extends StatelessWidget {
