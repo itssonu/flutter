@@ -38,15 +38,19 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.onChanged,
     this.obscureText,
+    this.keyboardType,
   });
 
   final String hintText;
   final bool obscureText;
   final Function(String) onChanged;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: keyboardType,
+      textAlign: TextAlign.center,
       onChanged: onChanged,
       obscureText: obscureText == null ? false : true,
       decoration: InputDecoration(
@@ -63,4 +67,8 @@ class CustomTextField extends StatelessWidget {
       ),
     );
   }
+
+  copywith() {}
+
+  copyWith() {}
 }

@@ -26,4 +26,5 @@ Map<String, WidgetBuilder> routes = {
   'weather': (context) => Weather(),
   // 'weather/locationScreen': (context) => LocationScreen(),
   'crypto': (context) => VirtualCurrency(),
+  // 'crypto': (context) => VirtualCurrency(),
 };

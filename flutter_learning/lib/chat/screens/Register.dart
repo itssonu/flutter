@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning/chat/utilities/widgets.dart';
 
 class Register extends StatelessWidget {
+  String password;
+  String email;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +30,22 @@ class Register extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(25.0, 35.0, 25.0, 10.0),
             child: CustomTextField(
-              hintText: 'Name',
+              keyboardType: TextInputType.emailAddress,
+              hintText: 'Email',
+              onChanged: (value) {
+                email = value;
+              },
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(25.0, 15.0, 25.0, 10.0),
-            child: CustomTextField(hintText: 'Email'),
+            child: CustomTextField(
+              obscureText: true,
+              hintText: 'Password',
+              onChanged: (value) {
+                password = value;
+              },
+            ),
           ),
           Padding(
             padding:
@@ -40,6 +53,10 @@ class Register extends StatelessWidget {
             child: CustomButton(
               name: 'Register',
               color: Colors.lightBlue[700],
+              onPress: () {
+                print(password);
+                print(email);
+              },
             ),
           ),
         ],
