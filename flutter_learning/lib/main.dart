@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/routes.dart';
 
+// import 'todo/TodoHome.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -64,6 +66,13 @@ class MyHome extends StatelessWidget {
                     route: 'chatHome',
                     color: Colors.lightBlue[700],
                     appName: 'Flash Chat',
+                  ),
+                ),
+                Expanded(
+                  child: MenuButton(
+                    route: 'todo',
+                    color: Colors.lightBlue[200],
+                    appName: 'Todo',
                   ),
                 ),
               ],

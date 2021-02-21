@@ -8,6 +8,7 @@ import 'package:flutter_learning/dice/DiceApp.dart';
 import 'package:flutter_learning/iamrich/IAmRich.dart';
 import 'package:flutter_learning/myprofilecard/MyProfileCard.dart';
 import 'package:flutter_learning/quiz/Quizzler.dart';
+import 'package:flutter_learning/todo/TodoHome.dart';
 import 'package:flutter_learning/virtualCurrency/VirtualCurrency.dart';
 import 'package:flutter_learning/weather/Weather.dart';
 import 'package:flutter_learning/xquiz/xquiz_main.dart';
@@ -28,4 +29,5 @@ Map<String, WidgetBuilder> routes = {
   // 'weather/locationScreen': (context) => LocationScreen(),
   'crypto': (context) => VirtualCurrency(),
   'chatHome': (context) => ChatHome(),
+  'todo': (context) => TodoHome(),
 };
