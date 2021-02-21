@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/chat/screens/Chathome.dart';
 import 'package:flutter_learning/main.dart';
 import 'package:flutter_learning/bmiCalculator/BMICalculator.dart';
 import 'package:flutter_learning/container/containerLearn.dart';
@@ -26,5 +27,5 @@ Map<String, WidgetBuilder> routes = {
   'weather': (context) => Weather(),
   // 'weather/locationScreen': (context) => LocationScreen(),
   'crypto': (context) => VirtualCurrency(),
-  // 'crypto': (context) => VirtualCurrency(),
+  'chatHome': (context) => ChatHome(),
 };

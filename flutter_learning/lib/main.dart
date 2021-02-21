@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/chat/screens/Chathome.dart';
 import 'package:flutter_learning/routes.dart';
 
-void main() {
-  runApp(ChatHome());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -55,6 +57,13 @@ class MyHome extends StatelessWidget {
                     route: 'xquiz',
                     color: Colors.indigo,
                     appName: 'X Quizz',
+                  ),
+                ),
+                Expanded(
+                  child: MenuButton(
+                    route: 'chatHome',
+                    color: Colors.lightBlue[700],
+                    appName: 'Flash Chat',
                   ),
                 ),
               ],
